@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Internet Malicious Activities</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+/* Bootstrap overrides */
+body {
+  /*min-height: 1000px;*/
+  padding-top: 70px;
+}
+
+.navbar-default {
+  height: 65px;
+}
+
+.navbar-default
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 65px;
+  font-size: 18pt;
+}
+
+.navbar-nav > li > a {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 65px;
+  font-size: 16pt;
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+
+<script>
+	// Get the CSV and create the chart
+	//$.getJSON('based.json', function (chart) {
+	//	Highcharts.chart('plot', chart);
+	//});
+  $.getJSON('corr.json', function (chart) {
+		Highcharts.chart('plotcorr', chart);
+	});
+  $.getJSON('daytoday.json', function (chart) {
+    Highcharts.chart('plotdaytoday', chart);
+	});
+
+</script>
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <a href="index.html" class="navbar-brand">Internet Malicious Activities Study</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav ">
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#download">Downloads</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#rpartners">Research Partners</a></li>
+              </ul>
+              <!--<ul class="nav navbar-nav navbar-right">
+                  <li class="mylogo"><a><img src="TU_Muenchen_Logo.svg" height=40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="rwth_comsys_bild_rgb.svg" height="40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="Usyd_new_logo.png" height="40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="neu.png" height="40px"/></a></li>
+              </ul>-->
+              <a href="https://github.com/toplists/toplists.github.io"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+    <div class="container">
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <div class="page-header">
+
+<h2 id="about">About this Study</h2>
+<p style="font-size: 16px">
+This study focuses on public blacklists-based reporting of Internet malicious activity (or mal-activity in short) with the objective of providing a systematic characterization of what has been reported over the years but perhaps more importantly, how the reported activity behaves in time. Using an initial seed of 22 blacklists, covering the period from January 2007 to June 2017, we collect more  than 51 million malicious activity reports involving 662K unique IP addresses worldwide. Leveraging the Wayback Machine, antivirus (AV) tool reports and several additional (public) datasets (such as BGP Routeview and Internet registries) we enrich the data with historical meta-information including geo-locations (countries) and infrastructures (autonomous system (AS) numbers). We categorize the reported mal-activities into six classes: malware, phishing, fraudulent services, spammers, exploits, and potentially unwanted programs (PUPs). We make our unique collected dataset publicly available for further research.
+<br><br>
+Our findings reveal that a high number of hosts being reported reside in ASes (Autonomous Systems) and countries that are highly specialized to a single class of mal-activity, while we found that 2.12\% of the reported ASes were involved in all six classes of mal-activities. 
+<br><br>
+The main contribution of this study is the temporal Analysis of the mal-activity reporting behavior. First, we model the malicious ecosystem behavior as an alternating renewal process and analyze the churn model. By observing the average lifetime and deathtime distributions of hosts (IPs, ASes and Countries) within the blacklists, we observed that the Top 5 countries to be the most recurrently reported as involved in mal-activity are Bahamas, Colombia, Panama, Georgia and Kazakhstan. We also observed that US is by a large margin, the country that shows the highest persistence of mal-activity reported with no interruption (with a mean lifetime of 511 weeks, while second is China with a mean lifetime of 55 weeks). Notably, ``China Telecom Backbone'' (AS4134) is the most persistent AS but the two most persistent IPs belong to Google LLC network (AS15169) with over 62 and 52 weeks of average continuous presence in the blacklists showing a surprisingly high Blacklisting bulletproof. 
+We looked into the behavior of the different categories of mal-activity and found that phishing activities are the most resilient with the lowest average death-times indicating quick recovery from potential shutdowns.  
+</p>
+<br>
+<h2 id="download">Paper and Raw Data Download</h2>
+<p style="font-size: 16px">
+Our paper has been submitted (for anonymous reviews) to <a href="https://www2019.thewebconf.org">WWW 2019</a>.<br>
+</p>
+
+<p style="font-size: 16px">
+We provide a historical and ongoing collection of top lists <a href="https://example.com/archive">on an archive server</a>.<br>
+A sample of dataset and scripts used for the publication is hosted at the <a href="https://example.com">Anonymous </a>.<br><br>
+Please contact use on the following email for if you intend to use the dataset and scripts. <br /><br>
+</p>
+
+<h2 id="contact">Contact</h2>
+<p style="font-size: 16px">
+	<b>anonymous_imas</b> [at] <b>gmail.com</b>
+</p>
+
+<h2 id="rpartner">Research Partners</h2>
+<p style="font-size: 16px">
+Historical Malware Dataset for this study is based on
+Institute's (name will be updated) <a href="https://example.com/"> project (will be updated)</a>
+
+    </div>  <!-- col -->
+  </div>  <!-- row -->
+
+    </div> <!-- /container -->
+
+</body>
+</html>
